@@ -15,7 +15,7 @@ class ScreenHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: MoneyManagerBottomNavigation(),
+      bottomNavigationBar: const MoneyManagerBottomNavigation(),
       body: SafeArea(
         child: ValueListenableBuilder(
           valueListenable: selectedIndexNotifier,
@@ -23,6 +23,18 @@ class ScreenHome extends StatelessWidget {
             return _pages[updatedIndex];
           },
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          if (selectedIndexNotifier.value == 0) {
+            // ignore: avoid_print
+            print('Transactions');
+          } else {
+            // ignore: avoid_print
+            print('Categories');
+          }
+        },
+        child: const Icon(Icons.add),
       ),
     );
   }
